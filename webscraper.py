@@ -33,9 +33,8 @@ all_techn_dict = {}
 all_subtechn_dict = {}
 
 # change range to get different techniques
-#for i in (8, 9):
-if True == True:
-    techn_num = 'TA' + '000' + str(8)
+for i in (8, 9):
+    techn_num = 'TA' + '000' + str(i)
     url = 'https://attack.mitre.org/tactics/' + techn_num
     driver.get(url)
 
