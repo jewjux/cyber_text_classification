@@ -1,11 +1,12 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 import re
 import csv
 
 # Mac: webdriver.Chrome(service=Service("/Users/jewel/Documents/text_classification/chromedrivermac"))
 # Windows: webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
-driver = webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
+driver = webdriver.Chrome(service=Service(r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe"))
 
 # main_techn, techn, sub_techn
 
@@ -32,13 +33,13 @@ all_techn_dict = {}
 all_subtechn_dict = {}
 
 # change range to get different techniques
-# main_techn_num = (8, 9)
+# main_techn_num = ['08', '09']
 
 # for only 1 technique
 if True == True:
 
 #for i in main_techn_num:
-    techn_num = 'TA' + '000' + str(8)
+    techn_num = 'TA' + '00' + str(10)
     url = 'https://attack.mitre.org/tactics/' + techn_num
     driver.get(url)
 
@@ -87,14 +88,13 @@ for k in all_techn_dict:
         all_examples_dict.update(examples_dict)
 
         driver.back()
-    print(f"Completed searching for {techn_id_name}'s techniques.")
+    print(f"Completed generation of {techn_id_name}'s techniques.")
 driver.close()
 
 # all_examples_dict will output combine ALL main technique's {Technique: ['Example1', 'Example2']}
 
 # converting to csv file
-
-with open('training.csv', 'w', newline='') as csvfile:
+with open('training.csv', 'w', encoding="utf8", newline='') as csvfile:
     headings = ['Technique', 'Example']
     new_val = csv.DictWriter(csvfile, fieldnames=headings)
     new_val.writeheader()
@@ -102,7 +102,3 @@ with open('training.csv', 'w', newline='') as csvfile:
     for k,v in all_examples_dict.items():
         for i in v:
             new_val.writerow({'Technique': k, 'Example': i})
-
-
-
-    
