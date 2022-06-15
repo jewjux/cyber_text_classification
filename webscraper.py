@@ -1,21 +1,11 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
-<<<<<<< Updated upstream
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import re
-import csv
-
-driver = webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriver.exe")
-=======
 import re
 import csv
 
 # Mac: webdriver.Chrome(service=Service("/Users/jewel/Documents/text_classification/chromedrivermac"))
 # Windows: webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
 driver = webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
->>>>>>> Stashed changes
 
 # main_techn, techn, sub_techn
 
@@ -42,18 +32,13 @@ all_techn_dict = {}
 all_subtechn_dict = {}
 
 # change range to get different techniques
-<<<<<<< Updated upstream
-for i in (8, 9):
-    techn_num = 'TA' + '000' + str(i)
-=======
-main_techn_num = (8, 9)
+# main_techn_num = (8, 9)
 
 # for only 1 technique
 if True == True:
 
 #for i in main_techn_num:
     techn_num = 'TA' + '000' + str(8)
->>>>>>> Stashed changes
     url = 'https://attack.mitre.org/tactics/' + techn_num
     driver.get(url)
 
@@ -85,16 +70,10 @@ for k in all_techn_dict:
         techn_link = driver.find_element(By.LINK_TEXT, d)
         techn_link.click()
         
-<<<<<<< Updated upstream
-        # checking if "Procedure Example" exists
-        if len(driver.find_elements(By.ID, "examples"))>0:
-            examples = driver.find_elements(By.XPATH, "//*[@class='table table-bordered table-alternate mt-2']/tbody/tr/td[3]")
-=======
         if len(driver.find_elements(By.ID, "examples"))>0: # checking if "Procedure Example" exists
             examples = driver.find_elements(By.XPATH, "//*[@class='table table-bordered table-alternate mt-2'][1]/tbody/tr/td[3]")
             tech_id_raw = driver.find_element(By.XPATH, "//div[@class='col-md-11 pl-0']").text
             tech_id = tech_id_raw.replace("ID: ", "")
->>>>>>> Stashed changes
         else:
             continue
         
@@ -114,16 +93,15 @@ driver.close()
 # all_examples_dict will output combine ALL main technique's {Technique: ['Example1', 'Example2']}
 
 # converting to csv file
-'''
+
 with open('training.csv', 'w', newline='') as csvfile:
     headings = ['Technique', 'Example']
     new_val = csv.DictWriter(csvfile, fieldnames=headings)
-
     new_val.writeheader()
-    for k in all_examples_dict:
-        new_val.writerow({'Technique': k, 'Example': all_examples_dict[k]})
-'''
 
+    for k,v in all_examples_dict.items():
+        for i in v:
+            new_val.writerow({'Technique': k, 'Example': i})
 
 
 
