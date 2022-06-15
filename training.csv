@@ -1,0 +1,88 @@
+Technique,Example
+Lateral Movement: T1210 Exploitation of Remote Services,APT28 exploited a Windows SMB Remote Code Execution Vulnerability to conduct lateral movement.
+Lateral Movement: T1210 Exploitation of Remote Services,Bad Rabbit used the EternalRomance SMB exploit to spread through victim networks.
+Lateral Movement: T1210 Exploitation of Remote Services,Conficker exploited the MS08-067 Windows vulnerability for remote code execution through a crafted RPC request.
+Lateral Movement: T1210 Exploitation of Remote Services,Dragonfly has exploited a Windows Netlogon vulnerability (CVE-2020-1472) to obtain access to Windows Active Directory servers.
+Lateral Movement: T1210 Exploitation of Remote Services,Emotet has been seen exploiting SMB via a vulnerability exploit like EternalBlue (MS17-010) to achieve lateral movement and propagation. 
+Lateral Movement: T1210 Exploitation of Remote Services,"Empire has a limited number of built-in modules for exploiting remote SMB, JBoss, and Jenkins servers."
+Lateral Movement: T1210 Exploitation of Remote Services,FIN7 has exploited ZeroLogon (CVE-2020-1472) against vulnerable domain controllers.
+Lateral Movement: T1210 Exploitation of Remote Services,Flame can use MS10-061 to exploit a print spooler vulnerability in a remote system with a shared printer in order to move laterally.
+Lateral Movement: T1210 Exploitation of Remote Services,Fox Kitten has exploited known vulnerabilities in remote services including RDP.
+Lateral Movement: T1210 Exploitation of Remote Services,InvisiMole can spread within a network via the BlueKeep (CVE-2019-0708) and EternalBlue (CVE-2017-0144) vulnerabilities in RDP and SMB respectively.
+Lateral Movement: T1210 Exploitation of Remote Services,Lucifer can exploit multiple vulnerabilities including EternalBlue (CVE-2017-0144) and EternalRomance (CVE-2017-0144).
+Lateral Movement: T1210 Exploitation of Remote Services,menuPass has used tools to exploit the ZeroLogon vulnerability (CVE-2020-1472).
+Lateral Movement: T1210 Exploitation of Remote Services,"NotPetya can use two exploits in SMBv1, EternalBlue and EternalRomance, to spread itself to other remote systems on the network."
+Lateral Movement: T1210 Exploitation of Remote Services,PoshC2 contains a module for exploiting SMB via EternalBlue.
+Lateral Movement: T1210 Exploitation of Remote Services,QakBot can move laterally using worm-like functionality through exploitation of SMB.
+Lateral Movement: T1210 Exploitation of Remote Services,Stuxnet propagates using the MS10-061 Print Spooler and MS08-067 Windows Server Service vulnerabilities.
+Lateral Movement: T1210 Exploitation of Remote Services,Threat Group-3390 has exploited MS17-010 to move laterally to other systems on the network.
+Lateral Movement: T1210 Exploitation of Remote Services,Tonto Team has used EternalBlue exploits for lateral movement.
+Lateral Movement: T1210 Exploitation of Remote Services,"TrickBot utilizes EternalBlue and EternalRomance exploits for lateral movement in the modules wormwinDll, wormDll, mwormDll, nwormDll, tabDll."
+Lateral Movement: T1210 Exploitation of Remote Services,WannaCry uses an exploit in SMBv1 to spread itself to other remote systems on a network.
+Lateral Movement: T1210 Exploitation of Remote Services,Wizard Spider has exploited or attempted to exploit Zerologon (CVE-2020-1472) and EternalBlue (MS17-010) vulnerabilities.
+Lateral Movement: T1534 Internal Spearphishing,Gamaredon Group has used an Outlook VBA module on infected systems to send phishing emails with malicious attachments to other employees within the organization.
+Lateral Movement: T1534 Internal Spearphishing,Kimsuky has sent internal spearphishing emails for lateral movement after stealing victim information.
+Lateral Movement: T1534 Internal Spearphishing,Lazarus Group has conducted internal spearphishing from within a compromised organization.
+Lateral Movement: T1534 Internal Spearphishing,Leviathan has conducted internal spearphishing within the victim's environment for lateral movement.
+Lateral Movement: T1570 Lateral Tool Transfer,APT32 has deployed tools after moving laterally using administrative accounts.
+Lateral Movement: T1570 Lateral Tool Transfer,BITSAdmin can be used to create BITS Jobs to upload and/or download files from SMB file servers.
+Lateral Movement: T1570 Lateral Tool Transfer,Chimera has copied tools between compromised hosts using SMB.
+Lateral Movement: T1570 Lateral Tool Transfer,cmd can be used to copy files to/from a remotely connected internal system.
+Lateral Movement: T1570 Lateral Tool Transfer,DustySky searches for network drives and removable media and duplicates itself onto them.
+Lateral Movement: T1570 Lateral Tool Transfer,esentutl can be used to copy files to/from a remote share.
+Lateral Movement: T1570 Lateral Tool Transfer,Expand can be used to download or upload a file over a network share.
+Lateral Movement: T1570 Lateral Tool Transfer,FIN10 has deployed Meterpreter stagers and SplinterRAT instances in the victim network after moving laterally.
+Lateral Movement: T1570 Lateral Tool Transfer,ftp may be abused by adversaries to transfer tools or files between systems within a compromised environment.
+Lateral Movement: T1570 Lateral Tool Transfer,GALLIUM has used PsExec to move laterally between hosts in the target network.
+Lateral Movement: T1570 Lateral Tool Transfer,HermeticWizard can copy files to other machines on a compromised network.
+Lateral Movement: T1570 Lateral Tool Transfer,"LockerGoga has been observed moving around the victim network via SMB, indicating the actors behind this ransomware are manually copying files form computer to computer instead of self-propagating."
+Lateral Movement: T1570 Lateral Tool Transfer,Lucifer can use certutil for propagation on Windows hosts within intranets.
+Lateral Movement: T1570 Lateral Tool Transfer,Operators deploying Netwalker have used psexec to copy the Netwalker payload across accessible systems.
+Lateral Movement: T1570 Lateral Tool Transfer,Olympic Destroyer attempts to copy itself to remote machines on the network.
+Lateral Movement: T1570 Lateral Tool Transfer,Operation Wocao has used SMB to copy files to and from target systems.
+Lateral Movement: T1570 Lateral Tool Transfer,PsExec can be used to download or upload a file over a network share.
+Lateral Movement: T1570 Lateral Tool Transfer,Sandworm Team has used move to transfer files to a network share.
+Lateral Movement: T1570 Lateral Tool Transfer,Shamoon attempts to copy itself to remote machines on the network.
+Lateral Movement: T1570 Lateral Tool Transfer,Stuxnet uses an RPC server that contains a file dropping routine and support for payload version updates for P2P communications within a victim network.
+Lateral Movement: T1570 Lateral Tool Transfer,Turla RPC backdoors can be used to transfer files to/from victim machines on the local network.
+Lateral Movement: T1570 Lateral Tool Transfer,WannaCry attempts to copy itself to remote computers after gaining access via an SMB exploit.
+Lateral Movement: T1570 Lateral Tool Transfer,Wizard Spider has used stolen credentials to copy tools into the %TEMP% directory of domain controllers.
+Lateral Movement: T1021 Remote Services,Kivars has the ability to remotely trigger keyboard input and mouse clicks. 
+Lateral Movement: T1021 Remote Services,Stuxnet can propagate via peer-to-peer communication and updates using RPC.
+Lateral Movement: T1091 Replication Through Removable Media,"Agent.btz drops itself onto removable media devices and creates an autorun.inf file with an instruction to run that file. When the device is inserted into another system, it opens autorun.inf and loads the malware."
+Lateral Movement: T1091 Replication Through Removable Media,APT28 uses a tool to infect connected USB devices and transmit itself to air-gapped computers when the infected USB device is inserted.
+Lateral Movement: T1091 Replication Through Removable Media,Part of APT28's operation involved using CHOPSTICK modules to copy itself to air-gapped machines and using files written to USB sticks to transfer data and command traffic.
+Lateral Movement: T1091 Replication Through Removable Media,Conficker variants used the Windows AUTORUN feature to spread through USB propagation.
+Lateral Movement: T1091 Replication Through Removable Media,Crimson can spread across systems by infecting removable media.
+Lateral Movement: T1091 Replication Through Removable Media,Darkhotel's selective infector modifies executables stored on removable media as a method of spreading across computers.
+Lateral Movement: T1091 Replication Through Removable Media,DustySky searches for removable media and duplicates itself onto it.
+Lateral Movement: T1091 Replication Through Removable Media,"FIN7 actors have mailed USB drives to potential victims containing malware that downloads and installs various backdoors, including in some cases for ransomware operations."
+Lateral Movement: T1091 Replication Through Removable Media,Flame contains modules to infect USB sticks and spread laterally to other Windows systems the stick is plugged into using Autorun functionality.
+Lateral Movement: T1091 Replication Through Removable Media,H1N1 has functionality to copy itself to removable media.
+Lateral Movement: T1091 Replication Through Removable Media,Mustang Panda has used a customized PlugX variant which could spread through USB connections.
+Lateral Movement: T1091 Replication Through Removable Media,njRAT can be configured to spread via removable drives.
+Lateral Movement: T1091 Replication Through Removable Media,QakBot has the ability to use removable drives to spread through compromised networks.
+Lateral Movement: T1091 Replication Through Removable Media,Ramsay can spread itself by infecting other portable executable files on removable drives.
+Lateral Movement: T1091 Replication Through Removable Media,APT30 may have used the SHIPSHAPE malware to move onto air-gapped networks. SHIPSHAPE targets removable drives to spread to other systems by modifying the drive to use Autorun to execute or by hiding legitimate document files and copying an executable to the folder with the same name as the legitimate document.
+Lateral Movement: T1091 Replication Through Removable Media,Stuxnet can propagate via removable media using an autorun.inf file or the CVE-2010-2568 LNK vulnerability.
+Lateral Movement: T1091 Replication Through Removable Media,Tropic Trooper has attempted to transfer USBferry from an infected USB device by copying an Autorun function to the target machine.
+Lateral Movement: T1091 Replication Through Removable Media,Unknown Logger is capable of spreading to USB devices.
+Lateral Movement: T1091 Replication Through Removable Media,Ursnif has copied itself to and infected removable drives for propagation.
+Lateral Movement: T1091 Replication Through Removable Media,USBferry can copy its installer to attached USB storage devices.
+Lateral Movement: T1091 Replication Through Removable Media,USBStealer drops itself onto removable media and relies on Autorun to execute the malicious file when a user opens the removable media on another system.
+Lateral Movement: T1072 Software Deployment Tools,APT32 compromised McAfee ePO to move laterally by distributing malware as a software deployment task.
+Lateral Movement: T1072 Software Deployment Tools,"Silence has used RAdmin, a remote software tool used to remotely control workstations and ATMs."
+Lateral Movement: T1072 Software Deployment Tools,"Threat Group-1314 actors used a victim's endpoint management platform, Altiris, for lateral movement."
+Lateral Movement: T1072 Software Deployment Tools,It is believed that a patch management system for an anti-virus product commonly installed among targeted companies was used to distribute the Wiper malware.
+Lateral Movement: T1080 Taint Shared Content,BRONZE BUTLER has placed malware on file shares and given it the same name as legitimate documents on the share.
+Lateral Movement: T1080 Taint Shared Content,Conti can spread itself by infecting other remote machines via network shared drives.
+Lateral Movement: T1080 Taint Shared Content,Darkhotel used a virus that propagates by infecting executables stored on shared drives.
+Lateral Movement: T1080 Taint Shared Content,Gamaredon Group has injected malicious macros into all Word and Excel documents on mapped network drives.
+Lateral Movement: T1080 Taint Shared Content,H1N1 has functionality to copy itself to network shares.
+Lateral Movement: T1080 Taint Shared Content,"InvisiMole can replace legitimate software or documents in the compromised network with their trojanized versions, in an attempt to propagate itself within the network."
+Lateral Movement: T1080 Taint Shared Content,Miner-C copies itself into the public folder of Network Attached Storage (NAS) devices and infects new victims who open the file.
+Lateral Movement: T1080 Taint Shared Content,Ramsay can spread itself by infecting other portable executable files on networks shared drives.
+Lateral Movement: T1080 Taint Shared Content,Stuxnet infects remote servers via network shares and by infecting WinCC database views with malicious code.
+Lateral Movement: T1080 Taint Shared Content,Ursnif has copied itself to and infected files in network drives for propagation.
+Lateral Movement: T1550 Use Alternate Authentication Material,"APT29 used forged SAML tokens that allowed the actors to impersonate users and bypass MFA, enabling APT29 to access enterprise cloud applications and services."
+Lateral Movement: T1550 Use Alternate Authentication Material,FoggyWeb can allow abuse of a compromised AD FS server's SAML token.
