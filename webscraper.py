@@ -39,7 +39,7 @@ all_subtechn_dict = {}
 if True == True:
 
 #for i in main_techn_num:
-    techn_num = 'TA' + '00' + str(10)
+    techn_num = 'TA' + '00' + str("01")
     url = 'https://attack.mitre.org/tactics/' + techn_num
     driver.get(url)
 
