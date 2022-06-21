@@ -3,10 +3,11 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.chrome.service import Service
 import re
 import csv
+import os
 
 # Mac: webdriver.Chrome(service=Service("/Users/jewel/Documents/text_classification/chromedrivermac"))
 # Windows: webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
-driver = webdriver.Chrome(service=Service(r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe"))
+driver = webdriver.Chrome(service=Service(r"C:\Users\user\Desktop\text_classification\chromedriver\chromedriverwindows.exe"))
 
 # main_techn, techn, sub_techn
 
@@ -94,7 +95,7 @@ driver.close()
 # all_examples_dict will output combine ALL main technique's {Technique: ['Example1', 'Example2']}
 
 # converting to csv file
-with open('training.csv', 'w', encoding="utf8", newline='') as csvfile:
+with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     headings = ['Technique', 'Example']
     new_val = csv.DictWriter(csvfile, fieldnames=headings)
     new_val.writeheader()

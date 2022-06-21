@@ -1,3 +1,5 @@
+# have to update the path namesand shift folders
+
 import pandas as pd 
 import json
 import pickle
