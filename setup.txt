@@ -1,0 +1,6 @@
+pip install selenium
+pip install regex
+pip install pandas
+pip install -U scikit-learn
+pip install transformers
+pip install tensorflow

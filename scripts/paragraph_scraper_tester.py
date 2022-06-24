@@ -1,10 +1,8 @@
-# have to update the path namesand shift folders
-
-import pandas as pd 
-import json
+import pandas as pd
 import pickle
+import os
 
-df = pd.read_json('annotations_20220531.json', encoding_errors='ignore')
+df = pd.read_json(os.path.join("assets","annotations_20220531.json"), encoding_errors='ignore')
 
 examples_list = []
 generated_techniques_dict = {}
@@ -32,7 +30,7 @@ for i in range(len(df)):
 
 df = pd.DataFrame.from_dict(collated_dict, orient='index', columns=['Example', 'Generated Techniques'])
 
-with open('model_best.pkl', 'rb') as model:
+with open(os.path.join("model","model_best.pkl"), 'rb') as model:
      classifier = pickle.load(model)
 
 def predict(example):
@@ -42,6 +40,8 @@ def predict(example):
 df['Predicted Technique'] = predict(str(df.iloc[i,0]) for i in range(len(df)))
 
 #df['Predicted Technique'] = df.apply(lambda x: predict(x['Example']), axis=1)
+
+# Checking if the predicted is the same as the annotated
 
 df['Match'] = 'False'
 
@@ -61,6 +61,6 @@ for i in range(len(df['Generated Techniques'])):
                 df.iloc[i,3] = 'True'
 
 
-df.to_csv('predicted.csv', index=False, encoding='utf-8')
+df.to_csv(os.path.join("assets","predicted.csv"), index=False, encoding='utf-8')
 
 print(df['Match'].value_counts())

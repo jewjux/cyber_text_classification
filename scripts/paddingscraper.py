@@ -61,22 +61,21 @@ num_of_examples = {}  # {Technique: No. of examples}
 masterlist = []  # [[tech,example], [tech,example]]
 removed_techniques = []
 with open(os.path.join("assets","training.csv"), 'r', encoding="utf8", newline='') as csvfile:
+    # Counter for number of examples per technique
     for a in csv.reader(csvfile): # a is a list [tech, example]
         masterlist.append(a)
         if a[0] not in num_of_examples:
             num_of_examples[a[0]] = 1
         if a[0] in num_of_examples:
             num_of_examples[a[0]] += 1
+    # Removing techniques with </= 5 examples
     for k,v in num_of_examples.items():
         if (v <= 5) and (k != "Technique"):
             removed_techniques.append(k)
-    # TO FIX THIS
-    for i in masterlist:
-        if any(i[0] in k for k in removed_techniques):
-            masterlist.remove(i)
-
-print(num_of_examples)
-print(removed_techniques)
+    for k in removed_techniques:
+        for i in masterlist:
+            if i[0]==k:
+                masterlist.remove(i)
 
 with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     csv.writer(csvfile).writerows(masterlist)
