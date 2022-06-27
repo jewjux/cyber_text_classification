@@ -1,4 +1,6 @@
 # for model
+import os
+import pandas as pd
 import tensorflow as tf
 from tensorflow import keras
 from keras.optimizers import Adam
@@ -9,13 +11,36 @@ from keras.metrics import CategoricalAccuracy
 from keras.utils import to_categorical
 from keras.layers import Input, Dense
 
-#https://www.kaggle.com/code/thebrownviking20/bert-multiclass-classification/notebook
-#https://www.analyticsvidhya.com/blog/2021/12/multiclass-classification-using-transformers/
-#https://www.analyticsvidhya.com/blog/2021/12/manual-for-the-first-time-users-google-bert-for-text-classification/
-#https://gist.github.com/analyticsindiamagazine/97f53c3a6ee5f63efea92e4159792f92#file-predicting_news_category_with_bert_in_tensorflow-ipynb
-#https://towardsdatascience.com/building-a-multi-label-text-classifier-using-bert-and-tensorflow-f188e0ecdc5d
-#https://analyticsindiamag.com/step-by-step-guide-to-implement-multi-class-classification-with-bert-tensorflow/
-#https://towardsdatascience.com/multi-class-text-classification-with-deep-learning-using-bert-b59ca2f5c613
-#https://colab.research.google.com/github/huggingface/notebooks/blob/master/examples/text_classification.ipynb
-#https://github.com/Dirkster99/PyNotes/blob/master/Transformers/LocalModelUsage_Finetuning/30%20MultiClass%20Classification%20in%2010%20Minutes%20with%20BERT-TensorFlow-SoftMax-LocalModel.ipynb
-#https://colab.research.google.com/drive/18vy67le2DC-iMJK-AiB0vVKtMRAxmBnB?usp=sharing
+df = pd.read_csv(os.path.join("assets","training.csv"))
+'''
+# Shuffle your dataset 
+shuffle_df = df.sample(frac=1)
+
+# Define a size for your train set 
+train_size = int(0.8 * len(df))
+validate_size = 0.5(len(df)-train_size)+train_size
+
+# Split your dataset 
+train_set = shuffle_df[:train_size]
+test_set = shuffle_df[train_size:validate_size]
+validate_set = shuffle_df[validate_size:]
+'''
+# Shuffle your dataset 
+shuffle_df = df.sample(frac=1)
+
+# Define a size for your train set 
+train_size = int(0.7 * len(df))
+
+# Split your dataset 
+train_set = shuffle_df[:train_size]
+test_set = shuffle_df[train_size:]
+
+encoded_dict = {
+	'No technique found': 0,
+	'Initial Access: T1078 Valid Accounts': 1,
+	'Initial Access: T1091 Replication Through Removable Media': 2,
+	'Initial Access: T1133 External Remote Services': 3,
+	'Initial Access: T1189 Drive-by Compromise': 4,
+    'Initial Access: T1190 Exploit Public-Facing Application':5,
+    
+}

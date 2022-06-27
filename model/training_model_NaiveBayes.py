@@ -1,4 +1,6 @@
+import os
 import pandas as pd
+import pickle
 from sklearn.naive_bayes import MultinomialNB
 
 from sklearn.pipeline import Pipeline
@@ -12,9 +14,8 @@ from sklearn.svm import LinearSVC # usually for binary
 
 from sklearn.metrics import confusion_matrix, accuracy_score
 
-df = pd.read_csv('training.csv')
+df = pd.read_csv(os.path.join("assets","training.csv"))
 
-print(df.shape)
 
 X, y = df['Example'], df['Technique']
 
@@ -31,7 +32,7 @@ model = Pipeline([('vectorizer', CountVectorizer(ngram_range=(1,2))),
 '''
 parameters = {'vectorizer__ngram_range': [(1, 1),(1, 2),(2,2)],
                 'tfidf__use_idf': (True, False),
-                'clf__alpha': [0.1, 1.0, 10],
+                'clf__alpha': [0.01, 0.1, 0.5, 1.0, 10.0],
                 'clf__fit_prior': [True, False]}
 gs_clf_svm = GridSearchCV(model, parameters, n_jobs=-1, cv=5)
 gs_clf_svm = gs_clf_svm.fit(X_train, y_train)
@@ -44,5 +45,5 @@ model.fit(X_train, y_train)
 pred = model.predict(X_test)
 print(model.score(X_validate, y_validate))
 print(accuracy_score(y_test, pred))
-print(confusion_matrix(y_test, pred))
 
+pickle.dump(model, open(os.path.join("model","model_naivebayes.pkl"), 'wb'))
