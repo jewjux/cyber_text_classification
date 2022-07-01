@@ -1,6 +1,14 @@
+conda create -n <env name> python=3.10.4 -y
+
 pip install selenium
 pip install regex
+pip install numpy
+pip install matplotlib
 pip install pandas
 pip install -U scikit-learn
 pip install transformers
 pip install tensorflow
+pip install huggingface-hub
+pip3 install torch torchvision torchaudio --extra-index-url https://download.pytorch.org/whl/cu113
+pip install keras
+pip install python-utils
