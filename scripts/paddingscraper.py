@@ -72,10 +72,13 @@ with open(os.path.join("assets","training.csv"), 'r', encoding="utf8", newline='
     for k,v in num_of_examples.items():
         if (v <= 5) and (k != "Technique"):
             removed_techniques.append(k)
+    print(len(masterlist))
     for k in removed_techniques:
-        for i in masterlist:
-            if i[0]==k:
+        for i in masterlist[:]: # Returning the entire list as when using .remove it will skip to the following value after removing
+            if i[0] in k:
+                print(i)
                 masterlist.remove(i)
+    print(len(masterlist))
 
 with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     csv.writer(csvfile).writerows(masterlist)

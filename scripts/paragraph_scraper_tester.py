@@ -46,7 +46,7 @@ df['Predicted Technique'] = predict(str(df.iloc[i,0]) for i in range(len(df)))
 df['Match'] = 'False'
 
 for i in range(len(df['Generated Techniques'])):
-    if (df.iloc[i,2] == 'No technique found'): # error in training data have \t
+    if (df.iloc[i,2] == 'No technique found\t'): # error in training data have \t
         if len(df.iloc[i,1]) == 0:
             df.iloc[i,3] = 'True'
         else:

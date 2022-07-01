@@ -46,6 +46,6 @@ pred = model.predict(X_test)
 print(model.score(X_validate, y_validate))
 print(accuracy_score(y_test, pred)) # accuracy of the model on the unseen test set
 '''
-
+ 
 # Saving the model
 #pickle.dump(model, open(os.path.join("model","model_best.pkl"), 'wb'))
