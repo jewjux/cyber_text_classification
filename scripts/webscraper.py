@@ -7,7 +7,8 @@ import os
 
 # Mac: webdriver.Chrome(service=Service("/Users/jewel/Documents/text_classification/chromedrivermac"))
 # Windows: webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
-driver = webdriver.Chrome(service=Service(r"C:\Users\user\Desktop\text_classification\chromedriver\chromedriverwindows.exe"))
+# Linux: webdriver.Chrome(service=Service("/home/user/Desktop/text_classification/chromedriver/chromedriverlinux"))
+driver = webdriver.Chrome(service=Service("/home/user/Desktop/text_classification/chromedriver/chromedriverlinux"))
 
 # main_techn, techn, sub_techn
 
