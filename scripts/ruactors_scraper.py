@@ -80,3 +80,5 @@ def to_1D(series):
     return pd.Series([x for _list in series for x in _list])
 print(to_1D(df["TTP"]).value_counts())
 print(df.head())
+
+df.to_csv(os.path.join("assets","ruscraper_results.csv"),index=False)
