@@ -5,7 +5,7 @@ This project extracts the MITRE ATT&CK technique, under a specific tactic, from 
 1. Create a fresh conda environment in directory via `conda create -n <environment name> python=3.10.4 -y`.  
 2. Activate the environment via `conda activate <environment name>`.  
 3. Install packages via `pip install -r requirements.txt`.
-4. Install spacy-transformers via `pip install -U scikit-learn`.
+4. Install sci-kit learn via `pip install -U scikit-learn`.
 
 ## ⏭ Components
 This describes the workflow of the scripts and the assets used.
