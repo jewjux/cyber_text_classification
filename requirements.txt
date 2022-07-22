@@ -3,7 +3,6 @@ regex
 numpy
 matplotlib
 pandas
-scikit-learn
 transformers
 tensorflow
 huggingface-hub

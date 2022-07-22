@@ -1,3 +1,6 @@
+# RU Actors Scraper
+# Scraping the data for russian actors to get the paragraphs and techniques as training data
+
 import os
 import re
 import json
@@ -11,7 +14,7 @@ reports_list = []
 ttp_list = []
 actor_list = []
 
-# check counts all match as it will be number of rows in dataframe
+# to check that all counts match as it will be number of rows in dataframe
 count_report = 0
 count_ttp = 0
 count_actor = 0
@@ -23,10 +26,13 @@ for actor in json_load:
             reports_list.append(i['description'])
         except:
             if 'description' not in i.keys() and "x_fireeye_com_additional_description_sections" in i.keys():
+                # using analysis instead of report
                 reports_list.append(i["x_fireeye_com_additional_description_sections"]["analysis"])
             else:
+                # no report and no analysis
                 reports_list.append("No report found.")
 
+# checking if all entries in json was uploaded to list
 if count_report == len(reports_list):
     extracted_dict["Reports"] = reports_list
 else:
@@ -39,7 +45,7 @@ for actor in json_load:
             ttp_list.append(i["x_fireeye_com_metadata"]["ttp"])
         except:
             if 'ttp' not in i["x_fireeye_com_metadata"].keys():
-                ttp_list.append(["No ttp provided."])
+                ttp_list.append(["No ttp provided"])
 
 for i in ttp_list:
     for ttp in i[:]:
@@ -70,12 +76,13 @@ else:
 
 df = pd.DataFrame.from_dict(extracted_dict)
 
+# checking that there is no row mismatch and count is the same
 if len(df) == count_report and len(df) == count_ttp and len(df) == count_actor:
     print("Dataframe created correctly with no missing data.")
 else:
     print("Error: Dataframe not created correctly")
 
-# checking the counts for each TTP
+# getting the different types of TTP and counts for each TTP
 def to_1D(series):
     return pd.Series([x for _list in series for x in _list])
 print(to_1D(df["TTP"]).value_counts())

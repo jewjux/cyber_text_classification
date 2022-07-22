@@ -1,17 +1,22 @@
-from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.chrome.service import Service
+# 1: Webscraper
+# This script outputs a .csv file of Examples and their relevant Techniques from the MITRE ATT&CK website
+# One improvement to make could be to extract sub techniques' examples and plunk them under the main technique
+
 import re
 import csv
 import os
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+from selenium.webdriver.chrome.service import Service
 
-# Mac: webdriver.Chrome(service=Service("/Users/jewel/Documents/text_classification/chromedrivermac"))
-# Windows: webdriver.Chrome(executable_path=r"C:\Users\user\Desktop\text_classification\chromedriverwindows.exe")
-# Linux: webdriver.Chrome(service=Service("/home/user/Desktop/text_classification/chromedriver/chromedriverlinux"))
-driver = webdriver.Chrome(service=Service("/home/user/Desktop/text_classification/chromedriver/chromedriverlinux"))
+# Mac: webdriver.Chrome(service=Service("<path to chromedriver>"))
+# Windows: webdriver.Chrome(executable_path=r"<path to chromedriver")
+# Linux: webdriver.Chrome(service=Service("<path to chromedriver>"))
+driver = webdriver.Chrome(service=Service("/home/intern/Documents/Jewel/text_classification/chromedriver/chromedriverlinux"))
 
-# main_techn, techn, sub_techn
+# MITRE ATT&CK Techniques: main_techn (known as tactic) > techn > sub_techn
 
+# outputs a dictionary of {Techn_num: Techn_name}
 def get_techn_names(driver, techn_num):
     techn_names = driver.find_elements(By.XPATH, "//*[@class='technique']/td[2]")
     techn_names_dict = {}
@@ -21,6 +26,7 @@ def get_techn_names(driver, techn_num):
         techn_names_dict[techn_num] = techn_names_list
     return techn_names_dict
 
+# outputs a dictionary of {Subtechn_num: Subtechn_name}
 def get_subtechn_names(driver, techn_num):
     subtechn_names = driver.find_elements(By.XPATH, "//*[@class='sub technique']/td[3]")
     subtechn_names_dict = {}
@@ -34,14 +40,14 @@ all_main_techn_dict = {}
 all_techn_dict = {}
 all_subtechn_dict = {}
 
+# for multiple techniques
 # change range to get different techniques
 # main_techn_num = ['08', '09']
+# for i in main_techn_num:
 
-# for only 1 technique
+# for only 1 technique (write techn_num in str())
 if True == True:
-
-#for i in main_techn_num:
-    techn_num = 'TA' + '00' + str("01")
+    techn_num = 'TA' + '00' + str("01") # replace str() with i if multiple techniques
     url = 'https://attack.mitre.org/tactics/' + techn_num
     driver.get(url)
 
@@ -61,15 +67,15 @@ if True == True:
 # all_techn_dict is {T000XX: ["Technique1", "Technique 2"]}
 # all_subtechn_dict is {T000XX: ["SubTechnique1", "SubTechnique 2"]}
 
+# clicking into the links of the techniques and extracting examples for each technique
 all_examples_dict = {}
-# clicking into the links of the techniques
 for k in all_techn_dict:
     driver.get(f'https://attack.mitre.org/tactics/{k}/')
     techn_id_name = all_main_techn_dict[k]
     print(f"Generating {techn_id_name}'s techniques now...")
-    # value is a list of the techniques in one main technique
+    # value in all_techn_dict is a list of the techniques in one main technique
     for d in all_techn_dict[k]:
-        # d is the name of the technique
+        # d is the name of each technique under a tactic
         techn_link = driver.find_element(By.LINK_TEXT, d)
         techn_link.click()
         
@@ -78,6 +84,7 @@ for k in all_techn_dict:
             tech_id_raw = driver.find_element(By.XPATH, "//div[@class='col-md-11 pl-0']").text
             tech_id = tech_id_raw.replace("ID: ", "")
         else:
+            # skipping techniques with no examples
             continue
         
         examples_list = []
@@ -92,10 +99,9 @@ for k in all_techn_dict:
         driver.back()
     print(f"Completed generation of {techn_id_name}'s techniques.")
 driver.close()
+# all_examples_dict will combine ALL main technique's {Technique: ['Example1', 'Example2']}
 
-# all_examples_dict will output combine ALL main technique's {Technique: ['Example1', 'Example2']}
-
-# converting to csv file
+# output to new csv file 'training.csv'
 with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     headings = ['Technique', 'Example']
     new_val = csv.DictWriter(csvfile, fieldnames=headings)

@@ -1,9 +1,12 @@
-# Not optimised for sub-techniques, only used to extract techniques
+# 2: Padding Scraper
+# Extracting examples for the specific tactic from EY data and padding it to training.csv
+# Not able to scale to sub-techniques yet, only used to extract techniques.
+# There are some difference in formatting of the padded data for sub-techniques so will have to separately add in more code if doing sub-techn
 
 import csv
 import os
 
-# Change tactic you want here
+# input tactic you want here
 tactic = "Initial Access"
 
 # get additional tactic data
@@ -23,7 +26,7 @@ with open(os.path.join("assets","padding_data.tsv"), encoding="utf8", newline=''
                     padding_data_dict[key] = [row[1]]
 # padding_data_dict = {Tactic: Technique: }
 
-# adding the additional data without filtering
+# adding the additional padding data without filtering
 with open(os.path.join("assets","training.csv"), 'a', encoding="utf8", newline='') as csvfile:
     headings = ['Technique', 'Example']
     new_val = csv.DictWriter(csvfile, fieldnames=headings)
@@ -35,10 +38,8 @@ with open(os.path.join("assets","training.csv"), 'a', encoding="utf8", newline='
         else:
             new_val.writerow({'Technique': k, 'Example': i})
 
-
-# removing the duplicates and adding "." to make sentences
-writing_to_csv = [] # [[Techniques, Example], [tech, eg.]]
-
+# removing the duplicates and adding "." to make consistent sentences
+writing_to_csv = [] # list will be [[Techniques, Example], [tech, eg.]]
 with open(os.path.join("assets","training.csv"), 'r', encoding="utf8", newline='') as csvfile:
     for a in csv.reader(csvfile): # a is a list [tech, example]
         if a[1] != "Example":
@@ -56,7 +57,7 @@ with open(os.path.join("assets","training.csv"), 'r', encoding="utf8", newline='
 with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     csv.writer(csvfile).writerows(writing_to_csv)
 
-# Removing techniques with less than 5 examples
+# removing techniques with less than 5 examples
 num_of_examples = {}  # {Technique: No. of examples}
 masterlist = []  # [[tech,example], [tech,example]]
 removed_techniques = []
@@ -81,12 +82,10 @@ with open(os.path.join("assets","training.csv"), 'r', encoding="utf8", newline='
 with open(os.path.join("assets","training.csv"), 'w', encoding="utf8", newline='') as csvfile:
     csv.writer(csvfile).writerows(masterlist)
             
-
 # adding the "No techniques found" data into training.csv
 with open(os.path.join("assets","training.csv"), 'a', encoding="utf8", newline='') as final:
     with open(os.path.join("assets","training_no_techn.csv"), 'r', encoding='utf8', newline='') as raw:
         rows_to_add = [rows for rows in csv.reader(raw)]
     csv.writer(final).writerows(rows_to_add)
-
 
 print("Padding completed.")
