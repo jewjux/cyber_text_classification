@@ -1,5 +1,5 @@
 # 🪐 MITRE ATT&CK Text Classification
-This project extracts the MITRE ATT&CK technique, under a specific tactic, from a piece of cyber article. The tactic chosen for training and testing is Initial Access. Refer to https://attack.mitre.org/ for other possible tactics to train on.
+This project extracts the MITRE ATT&CK techniques under a specified tactic from a piece of cyber article. The tactic chosen for training and testing is Initial Access. Refer to https://attack.mitre.org/ for other possible tactics to train on. Scripts can also be edited to train other tactics.
 
 ## ✔️ Requirements 
 1. Create a fresh conda environment in directory via `conda create -n <environment name> python=3.10.4 -y`.  
@@ -20,8 +20,8 @@ This describes the workflow of the scripts and the assets used.
 ### 🗂 Assets
 | File | Source | Description |
 | --- | --- | --- |
-| [`assets/annotations_20220531.json`](assets/annotations_20220531.json) | Local | Contains paragraphs and their generated Techniques |
+| [`assets/annotations_20220531.json`](assets/annotations_20220531.json) | Local | Contains unseen paragraphs and their generated Techniques |
 | [`assets/training.csv`](assets/training.csv) | Local | Training data for model |
-| [`assets/training_no_techn.csv`](assets/training_no_techn.csv) | Local | To train "No Technique Found" |
-| [`assets/predicted.csv`](assets/predicted.csv) | Local | Collating the predicted results on  and their validity |
+| [`assets/training_no_techn.csv`](assets/training_no_techn.csv) | Local | To train "No Technique Found" class |
+| [`assets/predicted.csv`](assets/predicted.csv) | Local | Collating the predicted results on unseen paragraphs and their validity |
 | [`model/model_best.pkl`](model/model_best.pkl) | Local | Trained multi-class text-classification model |
