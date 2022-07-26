@@ -45,7 +45,7 @@ for actor in json_load:
             ttp_list.append(i["x_fireeye_com_metadata"]["ttp"])
         except:
             if 'ttp' not in i["x_fireeye_com_metadata"].keys():
-                ttp_list.append(["No ttp provided"])
+                ttp_list.append(["No technique found"])
 
 for i in ttp_list:
     for ttp in i[:]:
@@ -54,7 +54,7 @@ for i in ttp_list:
         if ttp == '':
             i.remove(ttp)
         if ttp == False:
-            print(i)
+            # there is a single entry of "False" into one of the ttp
             i.remove(ttp)
         else:
             continue
