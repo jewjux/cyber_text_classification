@@ -8,12 +8,14 @@ import pandas as pd
 df = pd.read_csv(os.path.join("assets","ruscraper_results.csv"))
 
 # matching the ttp provided to MITRE ATT&CK TTP
-# Defacement -> Impact/Defacement
-# Exploit Development -> Resource Development/Develop Capabilities
-# Hardware_Supply Chain Compromise -> Initial Access/Supply Chain Compromise
-# Web Application Attacks -> Initial Access/Exploit Public-Facing Application
-# Domain Registration_DNS Abuse and Manipulation -> Initial Access/Valid Accounts
-# Domain Registration/DNS Abuse and Manipulation -> Initial Access/Valid Accounts
+'''
+Defacement -> Impact/Defacement
+Exploit Development -> Resource Development/Develop Capabilities
+Hardware_Supply Chain Compromise -> Initial Access/Supply Chain Compromise
+Web Application Attacks -> Initial Access/Exploit Public-Facing Application
+Domain Registration_DNS Abuse and Manipulation -> Initial Access/Valid Accounts
+Domain Registration/DNS Abuse and Manipulation -> Initial Access/Valid Accounts
+'''
 
 # make TTP rows into list
 df["TTP"] = df["TTP"].apply(eval)
